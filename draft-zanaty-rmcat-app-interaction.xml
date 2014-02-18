@@ -1,29 +1,5 @@
 <?xml version="1.0" encoding="US-ASCII"?>
-<!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
-<!ENTITY rfc0768 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.0768.xml">
-<!ENTITY rfc2119 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
-<!ENTITY rfc3550 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3550.xml">
-<!ENTITY rfc3551 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3551.xml">
-<!ENTITY rfc4340 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4340.xml">
-<!ENTITY rfc4566 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4566.xml">
-<!ENTITY rfc4585 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4585.xml">
-<!ENTITY rfc5104 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5104.xml">
-<!ENTITY rfc5109 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5109.xml">
-<!ENTITY rfc5348 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5348.xml">
-<!ENTITY rfc5450 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5450.xml">
-<!ENTITY rfc5506 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5506.xml">
-<!ENTITY rfc5681 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5681.xml">
-<!ENTITY rfc5761 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5761.xml">
-<!ENTITY rfc6330 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6330.xml">
-<!ENTITY rfc6865 PUBLIC "" "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6865.xml">
-<!ENTITY I-D.ietf-rmcat-cc-requirements PUBLIC "" "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.ietf-rmcat-cc-requirements.xml">
-<!ENTITY I-D.ietf-avtcore-rtp-circuit-breakers PUBLIC "" "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.ietf-avtcore-rtp-circuit-breakers.xml">
-<!ENTITY I-D.welzl-rmcat-coupled-cc PUBLIC "" "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.welzl-rmcat-coupled-cc.xml">
-<!ENTITY I-D.alvestrand-rmcat-remb PUBLIC "" "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.alvestrand-rmcat-remb.xml">
-<!ENTITY I-D.ietf-mmusic-sdp-bundle-negotiation PUBLIC "" "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.ietf-mmusic-sdp-bundle-negotiation.xml">
-<!ENTITY I-D.alvestrand-rmcat-remb PUBLIC "" "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.alvestrand-rmcat-remb.xml">
-<!ENTITY I-D.ietf-rmcat-eval-criteria PUBLIC "" "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.ietf-rmcat-eval-criteria.xml">
-]>
+<!DOCTYPE rfc SYSTEM "rfc2629.dtd" []>
 <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
 <!-- used by XSLT processors -->
 <?rfc strict="yes" ?>
@@ -46,482 +22,405 @@
 <!-- keep one blank line between list items -->
 <!-- end of list of popular I-D processing instructions -->
 <rfc category="info" docName="draft-zanaty-rmcat-app-interaction-00" ipr="trust200902">
-  <!-- category values: std, bcp, info, exp, and historic
+<!-- category values: std, bcp, info, exp, and historic
      ipr values: full3667, noModification3667, noDerivatives3667
      you can add the attributes updates="NNNN" and obsoletes="NNNN" 
      they will automatically be output with "(if approved)" -->
 
-  <!-- ***** FRONT MATTER ***** -->
-
-  <front>
-    <!-- The abbreviated title is used in the page header - it is only necessary if the 
-         full title is longer than 39 characters -->
-
-    <title abbrev="RMCAT Application Interaction">RTP Application Interaction with Congestion Control
-    </title>
-
-    <!-- add 'role="editor"' below for the editors if appropriate -->
-
-    <!-- Another author who claims to be an editor -->
-
-    <author fullname="Mo Zanaty" initials="M."
-            surname="Zanaty">
-      <organization>Cisco</organization>
-
-      <address>
-        <postal>
-          <street></street>
-
-          <!-- Reorder these if your country does things differently -->
-
-          <city>Raleigh</city>
-
-          <region>NC</region>
-
-          <code></code>
-
-          <country>USA</country>
-        </postal>
-
-        <phone>+1 919 476 2211</phone>
-
-        <email>mzanaty@cisco.com</email>
-
-        <!-- uri and facsimile elements may also be added -->
-      </address>
-    </author>
-
-<author fullname="Varun Singh" initials="V."
-    surname="Singh">
-    <organization>Aalto University</organization>
+<front>
     
-    <address>
-        <postal>
-            <street></street>
-            
-            <!-- Reorder these if your country does things differently -->
-            
-            <city>Espoo</city>
-            
-            <region>FIN</region>
-            
-            <code></code>
-            
-            <country>Finland</country>
-        </postal>
-        
-        <phone></phone>
-        
-        <email>varun@comnet.tkk.fi</email>
-        
-        <!-- uri and facsimile elements may also be added -->
-    </address>
+<!-- The abbreviated title is used in the page header - it is only necessary if the
+     full title is longer than 39 characters -->
+<title abbrev="RMCAT Application Interaction">RTP Application Interaction with Congestion Control
+</title>
+
+<!-- add 'role="editor"' below for the editors if appropriate -->
+<!-- Another author who claims to be an editor -->
+
+<author fullname="Mo Zanaty" initials="M." surname="Zanaty">
+<organization>Cisco</organization>
+<address>
+<postal>
+<street></street>
+<city>Raleigh</city>
+<region>NC</region>
+<code></code>
+<country>USA</country>
+</postal>
+<phone></phone>
+<email>mzanaty@cisco.com</email>
+</address>
 </author>
 
-<author fullname="Suhas Nandakumar" initials="S."
-    surname="Nandakumar">
-    <organization>Cisco</organization>
-    
-    <address>
-        <postal>
-            <street></street>
-            
-            <!-- Reorder these if your country does things differently -->
-            
-            <city>San Jose</city>
-            
-            <region>CA</region>
-            
-            <code></code>
-            
-            <country>USA</country>
-        </postal>
-        
-        <phone></phone>
-        
-        <email>snandaku@cisco.com</email>
-        
-        <!-- uri and facsimile elements may also be added -->
-    </address>
+<author fullname="Varun Singh" initials="V." surname="Singh">
+<organization>Aalto University</organization>
+<address>
+<postal>
+<street></street>
+<city>Espoo</city>
+<region>FIN</region>
+<code></code>
+<country>Finland</country>
+</postal>
+<phone></phone>
+<email>varun@comnet.tkk.fi</email>
+</address>
 </author>
 
-    <date year="2014" />
+<author fullname="Suhas Nandakumar" initials="S." surname="Nandakumar">
+<organization>Cisco</organization>
+<address>
+<postal>
+<street></street>
+<city>San Jose</city>
+<region>CA</region>
+<code></code>
+<country>USA</country>
+</postal>
+<phone></phone>
+<email>snandaku@cisco.com</email>
+</address>
+</author>
 
-    <!-- If the month and year are both specified and are the current ones, xml2rfc will fill 
-         in the current day for you. If only the current year is specified, xml2rfc will fill 
+<date year="2014" />
+
+<!-- If the month and year are both specified and are the current ones, xml2rfc will fill
+     in the current day for you. If only the current year is specified, xml2rfc will fill
 	 in the current day and month for you. If the year is not the current one, it is 
 	 necessary to specify at least a month (xml2rfc assumes day="1" if not specified for the 
 	 purpose of calculating the expiry date).  With drafts it is normally sufficient to 
 	 specify just the year. -->
 
-    <!-- Meta-data Declarations -->
+<!-- Meta-data Declarations -->
 
-    <area>RAI</area>
+<area>RAI</area>
 
-    <workgroup>RMCAT WG</workgroup>
-
-    <!-- WG name at the upperleft corner of the doc,
-         IETF is fine for individual submissions.  
+<workgroup>RMCAT WG</workgroup>
+<!-- WG name at the upperleft corner of the doc,
+     IETF is fine for individual submissions.
 	 If this element is not present, the default is "Network Working Group",
-         which is used by the RFC Editor as a nod to the history of the IETF. -->
+     which is used by the RFC Editor as a nod to the history of the IETF. -->
 
-    <keyword>RTP</keyword>
+<keyword>RTP</keyword>
+<!-- Keywords will be incorporated into HTML output
+     files in a meta tag but they have no effect on text or nroff
+     output. If you submit your draft to the RFC Editor, the
+     keywords will be used for the search engine. -->
 
-    <!-- Keywords will be incorporated into HTML output
-         files in a meta tag but they have no effect on text or nroff
-         output. If you submit your draft to the RFC Editor, the
-         keywords will be used for the search engine. -->
+<abstract>
+<t>
+Interactive real-time media applications that use the Real-time Transport Protocol (RTP) over the User Datagram Protocol (UDP) must use congestion control techniques above the UDP layer since it provides none. This memo describes the interactions and interfaces necessary between the application components that relate to congestion control, including the RTP layer, the higher-level media codec control layer, and the lower-level transport interface and the congestion control layer.
+</t>
+</abstract>
 
-    <abstract>
-      <t>
-          Interactive real-time media applications that use the Real-time Transport Protocol (RTP) over the User Datagram Protocol (UDP) must use congestion control techniques above the UDP layer since it provides none. This memo describes the interactions and interfaces necessary between the application components that relate to congestion control, including the RTP layer, the higher-level media codec control layer, and the lower-level transport interface and the congestion control layer.
-      </t>
-    </abstract>
-  </front>
+</front>
 
-  <middle>
-    <section title="Introduction">
-      <t>
-      Interactive real-time media applications most commonly use RTP <xref target="RFC3550" /> over UDP <xref target="RFC0768" />. Since UDP provides no form of congestion control, which is essential for any application deployed on the Internet, these RTP applications have historically implemented one of the following options at the application layer to address their congestion control requirements.
-      </t>
-      <t><list style="numbers">
-        <t>For media with relatively low packet rates and bit rates, such as many speech codecs, some applications use a simple form of congestion control that stops transmission permanently or temporarily after observing significant packet loss over a significant period of time, similar to the <xref target="I-D.ietf-avtcore-rtp-circuit-breakers">RTP circuit breakers</xref>.
-        </t>
-        <t>Some applications have no explicit congestion control, despite the clear requirements in RTP and its profiles AVP <xref target="RFC3551" /> and AVPF <xref target="RFC4585" />, under the expectation that users will terminate media flows that are significantly impaired by congestion (in essence, a human circuit breakers).
-        </t>
-        <t>For media with substantially higher packet rates and bit rates, such as many video codecs, various non-standard congestion control techniques are often used to adapt transmission rate based on receiver feedback.
-        </t>
-        <t>Some experimental applications use standardized techniques such as TCP-Friendly Rate Control (TFRC) <xref target="RFC5348" />. However, for various reasons, these have not been widely deployed.
-        </t>
-      </list></t>
-      <t>
-      The RTP Media Congestion Avoidance Techniques (RMCAT) working group was chartered to standardize appropriate and effective congestion control for RTP applications. It is expected such applications will migrate from the above historical solutions to the RMCAT solution(s).
-      </t>
-      <t>
-      The RMCAT requirements <xref target="I-D.ietf-rmcat-cc-requirements" /> include low delay, reasonably high throughput, fast reaction to capacity changes including routing or interface changes, stability without over-reaction or oscillation, fair bandwidth sharing with other instances of itself and TCP flows, sharing information across multiple flows when possible <xref target="I-D.welzl-rmcat-coupled-cc" />, and performing as well or better in networks which support Active Queue Management (AQM), Explicit Congestion Notification (ECN), or Differentiated Services Code Points (DSCP).
-      </t>
-      <t>
-      In order to meet these requirements, interactions are necessary between the application's congestion controller, the RTP layer, media codecs, other components, and the OS's UDP stack. This memo discusses these interactions, presents a conceptual model of the required interfaces based on a simplified application decomposition, and proposes specific information exchange across these interfaces along with corresponding component behavior.
-      </t>
-      <t>
-      Note that RTP can also operate over other transports with integrated congestion control such as TCP <xref target="RFC5681" /> and DCCP <xref target="RFC4340" />, but that is beyond the scope of RMCAT and this memo.
-      </t>
-    </section>
+<middle>
     
-      <section title="Requirements Key Words">
-          <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-              "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
-              document are to be interpreted as described in <xref
-                  target="RFC2119" />.</t>
-      </section>
+<section title="Introduction">
+<t>
+Interactive real-time media applications most commonly use RTP <xref target="RFC3550" /> over UDP <xref target="RFC0768" />. Since UDP provides no form of congestion control, which is essential for any application deployed on the Internet, these RTP applications have historically implemented one of the following options at the application layer to address their congestion control requirements.
+</t>
+<t>
+<list style="numbers">
+<t>
+For media with relatively low packet rates and bit rates, such as many speech codecs, some applications use a simple form of congestion control that stops transmission permanently or temporarily after observing significant packet loss over a significant period of time, similar to the RTP circuit breakers <xref target="I-D.ietf-avtcore-rtp-circuit-breakers" />.
+</t>
+<t>
+Some applications have no explicit congestion control, despite the clear requirements in RTP and its profiles AVP <xref target="RFC3551" /> and AVPF <xref target="RFC4585" />, under the expectation that users will terminate media flows that are significantly impaired by congestion (in essence, human circuit breakers).
+</t>
+<t>
+For media with substantially higher packet rates and bit rates, such as many video codecs, various non-standard congestion control techniques are often used to adapt transmission rate based on receiver feedback.
+</t>
+<t>
+Some experimental applications use standardized techniques such as TCP-Friendly Rate Control (TFRC) <xref target="RFC5348" />. However, for various reasons, these have not been widely deployed.
+</t>
+</list>
+</t>
+<t>
+The RTP Media Congestion Avoidance Techniques (RMCAT) working group was chartered to standardize appropriate and effective congestion control for RTP applications. It is expected such applications will migrate from the above historical solutions to the RMCAT solution(s).
+</t>
+<t>
+The RMCAT requirements <xref target="I-D.ietf-rmcat-cc-requirements" /> include low delay, reasonably high throughput, fast reaction to capacity changes including routing or interface changes, stability without over-reaction or oscillation, fair bandwidth sharing with other instances of itself and TCP flows, sharing information across multiple flows when possible <xref target="I-D.welzl-rmcat-coupled-cc" />, and performing as well or better in networks which support Active Queue Management (AQM), Explicit Congestion Notification (ECN), or Differentiated Services Code Points (DSCP).
+</t>
+<t>
+In order to meet these requirements, interactions are necessary between the application's congestion controller, the RTP layer, media codecs, other components, and the OS's UDP stack. This memo discusses these interactions, presents a conceptual model of the required interfaces based on a simplified application decomposition, and proposes specific information exchange across these interfaces along with corresponding component behavior.
+</t>
+<t>
+Note that RTP can also operate over other transports with integrated congestion control such as TCP <xref target="RFC5681" /> and DCCP <xref target="RFC4340" />, but that is beyond the scope of RMCAT and this memo.
+</t>
+</section>
+
+<section title="Key Words for Requirements">
+<t>
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in <xref target="RFC2119" />.
+</t>
+</section>
       
-          <section title="Conceptual Model">
-          <t>
-          It is useful to decompose an RTP application into several components to facilitate understanding and discussion of where congestion control functions operate, and how they interface with the other components. The conceptual model in <xref target="model1" /> consists of the following components.
-          </t>
-              <figure align="center" anchor="model1">
-                  <preamble></preamble>
-                  <artwork align="left"><![CDATA[
-                      +----------------------+
-                      |         Codec        |
-                      |         |   |        |
-                      | APP     |  RTP       |
-                      |         |   |        |
-                      |         Congestion---|---Shared
-                      |         Control      |   State
-                      +----------------------+
-                      |
-                      +----------------------+
-                      | OS         UDP       |
-                      +----------------------+
-                  ]]></artwork>
-                  <postamble></postamble>
-              </figure>
-          <t><list style="symbols">
-            <t>
-            APP: Application containing one or more RTP streams and the corresponding media codecs and congestion controllers. For example, a WebRTC browser.
-            </t>
-            <!-- VS: shouldn't some part of the application state and 
-            settings be applied here, for example, the constraints API? -->
+<section title="Conceptual Model">
+<t>
+It is useful to decompose an RTP application into several components to facilitate understanding and discussion of where congestion control functions operate, and how they interface with the other components. The conceptual model in <xref target="model1" /> consists of the following components.
+</t>
 
-            <t>Codec: Media encoder/decoder or other source/sink for the RTP payload. The codec may be, for example, a simple monaural audio format, a complex scalable video codec with several dependent layers, or a source/sink with no live encoding/decoding such as a mixer which selectively switches or forwards streams rather than mixes media. For brevity, this component also encompasses the static media configuration negotiated in session establishment, so no further components are modeled for session establishment signaling purposes.
-            </t>
+<figure align="center" anchor="model1">
+<preamble></preamble>
+<artwork align="center"><![CDATA[
++----------------------+
+|         Config       |
+|           |          |
+|         Codec        |
+|         |   |        |
+| APP     |  RTP       |
+|         |   |        |
+|         Congestion---|---Shared
+|         Control      |   State
++----------------------+
+            |
++----------------------+
+| OS       UDP         |
++----------------------+
+]]></artwork>
+<postamble></postamble>
+</figure>
 
-            <t>
-            RTP: Standard RTP stack functions, including RTCP, but excluding possible new extensions specific to congestion control (CC) such as <xref target="I-D.ietf-avtcore-rtp-circuit-breakers">circuit breakers</xref>,  TMMBR <xref target="RFC5104" /> or REMB <xref target="I-D.alvestrand-rmcat-remb" /> (for receiver-side CC), <xref target="RFC4585">ACK</xref> (for sender-side CC), absolute timestamps (for sender-side or receiver-side CC), etc.
-            </t>
+<t>
+<list style="symbols">
+<t>
+APP: Application containing one or more RTP streams and the corresponding media codecs and congestion controllers. For example, a WebRTC browser.
+</t>
+<t>
+Config: Media and transport configuration specified by the application (for example, using the constraints API in a WebRTC Javascript application), after media and transport parameters have been negotiated with the remote peer (for example, using SDP or other protocols). This determines the initial static configuration negotiated in session establishment. The dynamic state may differ due to congestion or other factors, but still must conform to limits established in the config.
+</t>
+<t>
+Codec: Media encoder/decoder or other source/sink for the RTP payload. The codec may be, for example, a simple monaural audio format, a complex scalable video codec with several dependent layers, or a source/sink with no live encoding/decoding such as a mixer which selectively switches or forwards streams rather than mixes media.
+</t>
+<t>
+RTP: Standard RTP stack functions, including RTCP, but excluding possible new extensions specific to congestion control (CC) such as circuit breakers <xref target="I-D.ietf-avtcore-rtp-circuit-breakers" />,  TMMBR <xref target="RFC5104" /> or REMB <xref target="I-D.alvestrand-rmcat-remb" /> (for receiver-side CC), ACK/NACK <xref target="RFC4585" /> (for sender-side CC), absolute timestamps (for sender-side or receiver-side CC), etc.
+</t>
+<t>
+Congestion Control: All functions directly responsible for congestion control, including a possible new RTP/RTCP extensions, send rate computation (for sender-side CC), receive rate computation (for receiver-side CC), other statistics, and control of the UDP sockets.
+</t>
+<!-- VS: traffic shapping or a pacing buffer? the absolute send timestamps should be here even though it applies to RTP? -->
+<t>
+Shared State: Storage and exchange of congestion control state for multiple flows within the application and beyond it.
+</t>
+<t>
+OS: Operating System containing the UDP socket interface and other network functions such as ECN, DSCP, physical interface events, interface-level traffic shaping, etc.
+</t>
+</list>
+</t>
 
-            <t>
-            Congestion Control: All functions directly responsible for congestion control, including a possible new RTP/RTCP extensions, send rate computation (for sender-side CC), receive rate computation (for receiver-side CC), other statistics, and control of the UDP sockets.
-            </t>
-            <!-- VS: traffic shapping or a pacing buffer? the absolute 
-            send timestamps should be here even though it applies to RTP? -->
-            <t>
-            Shared State: Storage and exchange of congestion control state for multiple flows within the application and beyond it.
-            </t>
-            
-            <t>
-            OS: Operating System containing the UDP socket interface and other network functions such as ECN, DSCP, physical interface events, interface-level traffic shaping, etc.
-            </t>
-          </list></t>
-          </section>
+</section>
 
-          <section title="Implementation Model">
-          <t>
-          There are advantages and drawbacks to implementing congestion control in the application layer. It avoids OS dependencies and allows for rapid experimentation, evolution and optimization for each application. However, it also puts the burden on all applications, which raises the risks of improper or divergent implementations. One motivation of this memo is to mitigate such risks by giving proper guidance on how the application components relating to congestion control should interact.
-          </t>
+<section title="Implementation Model">
+<t>
+There are advantages and drawbacks to implementing congestion control in the application layer. It avoids OS dependencies and allows for rapid experimentation, evolution and optimization for each application. However, it also puts the burden on all applications, which raises the risks of improper or divergent implementations. One motivation of this memo is to mitigate such risks by giving proper guidance on how the application components relating to congestion control should interact.
+</t>
+<t>
+Another drawback of congestion control in the application layer is that any decomposition, including the one presented in <xref target="model1" />, is purely conceptual and illustrative, since implementations have differing designs and decompositions. Conversely, this can be viewed as an advantage to distribute congestion control functions wherever expedient without rigid interfaces. For example, they may be distributed within the RTP stack itself, so the separate components in <xref target="model1" /> are combined into a single RTP+CC component as shown in <xref target="model2" />.
+</t>
+<figure align="center" anchor="model2">
+<preamble></preamble>
+<artwork align="center"><![CDATA[
++----------------------+
+|           Config     |
+|             |        |
+|           Codec      |
+| APP         |        |
+|          RTP+CC------|---Shared
++----------------------+   State
+              |
++----------------------+
+| OS         UDP       |
++----------------------+
+]]></artwork>
+<postamble></postamble>
+</figure>
+<t>
+The conceptual model in <xref target="model1" /> will be used throughout this memo to establish clearer boundaries between functions. But actual implementations may be closer to the looser model in <xref target="Singh12" />.
+</t>
+</section>
 
-          <t>
-          Another drawback of congestion control in the application layer is that any decomposition, including the one presented in <xref target="model1" />, is purely conceptual and illustrative, since implementations have differing designs and decompositions. Conversely, this can be viewed as an advantage to distribute congestion control functions wherever expedient without rigid interfaces. For example, they may be distributed within the RTP stack itself, so the separate components in <xref target="model1" /> are combined into a single RTP+CC component as shown in <xref target="model2" />.
-          </t>
-          <figure align="center" anchor="model2">
-              <preamble></preamble>
-              <artwork align="left"><![CDATA[
-                  +----------------------+
-                  |           Codec      |
-                  | APP         |        |
-                  |          RTP+CC------|---Shared
-                  +----------------------+   State
-                  |
-                  +----------------------+
-                  | OS         UDP       |
-                  +----------------------+
-              ]]></artwork>
-              <postamble></postamble>
-          </figure>
-          <t>
-          The conceptual model in <xref target="model1" /> will be used throughout this memo to establish clearer boundaries between functions. But actual implementations may be closer to the looser model in <xref target="Singh12" />.
-          </t>
-          </section>
+<section title="Interfaces and Interactions">
 
-          <section title="Interfaces and Interactions">
-          
-          <section title="Codec - RTP Interactions">
-          <t>
-          
-          Since the Codec component also encompasses static media configuration from session signaling, the primary interactions here that are relevant to congestion control are the multiplexing of media streams <xref target="I-D.ietf-mmusic-sdp-bundle-negotiation" /> and RTP/RTCP <xref target="RFC5761" /> on the same UDP port, and the negotiated RTCP attributes such as reduced size <xref target="RFC5506" />, codec control <xref target="RFC5104" />, transmission time <xref target="RFC5450" />, etc.
-          </t>
+<section title="Config - Codec Interactions">
+<t>
+The primary interactions between the config and the codec that are relevant to congestion control are the multiplexing of media streams <xref target="I-D.ietf-mmusic-sdp-bundle-negotiation" /> and RTP/RTCP <xref target="RFC5761" /> on the same UDP port, and the negotiated RTCP attributes such as reduced size <xref target="RFC5506" />, codec control <xref target="RFC5104" />, transmission time <xref target="RFC5450" />, etc.
+</t>
+<t>
+The config also establishes limits for the codec such as maximum bit rate and other codec-specific parameters. For example, a video codec config often sets limits on maximum resolution and frame rate as well as bit rate.
+</t>
+</section>
 
-          <t>
-          Packetization of codec frames into RTP packets can also be an important interaction. Some network interfaces may benefit from small packet sizes well below the MTU, while others may benefit from large packets approaching the MTU. Equalizing packet sizes of a frame may also be beneficial in some cases, rather than a combination of large and small packets. For example, in some FEC schemes, the FEC bandwidth overhead depends on the largest source packet size. Equalizing the source packet sizes can yield lower overhead than a combination of large and small packets.
-          </t>
-          </section>
+<section title="Codec - RTP Interactions">
+<t>
+Packetization of codec frames into RTP packets can be an important interaction. Some network interfaces may benefit from small packet sizes well below the MTU, while others may benefit from large packets approaching the MTU. Equalizing packet sizes of a frame may also be beneficial in some cases, rather than a combination of large and small packets. For example, in some FEC schemes, the FEC bandwidth overhead depends on the largest source packet size. Equalizing the source packet sizes can yield lower overhead than a combination of large and small packets.
+</t>
+</section>
 
-          <section title="Codec - CC Interactions">
-          <t>
-          Allowed Rate (from CC to Codec): The max transmit rate allowed over the next time interval. The time interval may be specified or may use a default, for example, one second. The rate may be specified in bytes or packets or both. The rate must never exceed permanent limits established in session signaling such as the SDP bandwidth attribute <xref target="RFC4566" /> nor temporary limits in RTCP such as TMMBR <xref target="RFC5104" /> or REMB <xref target="I-D.alvestrand-rmcat-remb" />. This is the most important interface among all components, and is always required in any RMCAT solution. In the simplest possible solution, it may be the only CC interface required.
-          </t>
+<section title="Codec - CC Interactions">
+<t>
+Allowed Rate (from CC to Codec): The max transmit rate allowed over the next time interval. The time interval may be specified or may use a default, for example, one second. The rate may be specified in bytes or packets or both. The rate must never exceed permanent limits established in session signaling such as the SDP bandwidth attribute <xref target="RFC4566" /> nor temporary limits in RTCP such as TMMBR <xref target="RFC5104" /> or REMB <xref target="I-D.alvestrand-rmcat-remb" />. This is the most important interface among all components, and is always required in any RMCAT solution. In the simplest possible solution, it may be the only CC interface required.
+</t>
+<t>
+Media Elasticity (from Codec to CC): Many live media encoders are highly elastic, often able to achieve any target bit rate within a wide range, by adapting the media quality. For example, a video encoder may support any bit rate within a range of a few tens or hundreds of kbps up to several Mbps, with rate changes registering as fast as the next video frame, although there may be limitations in the frequency of changes. Other encoders may be less elastic, supporting a narrower rate range, coarser granularity of rate steps, slower reaction to rate changes, etc. Other media, particularly some audio codecs, may be fully inelastic with a single fixed rate. CC can beneficially use codec elasticity, if provided, to plan Allowed Rate changes, especially when there are multiple flows sharing CC state and bandwidth.
+</t>
+<t>
+Startup Ramp (from Codec to CC, and from CC to Codec): Startup is an important moment in a conversation. Rapid rate adaptation during startup is therefore important. The codec should minimize its startup media rate as much as possible without adversely impacting the user experience, and support a strategy for rapid rate ramp. The CC should allow the highest startup media rate as possible without adversely impacting network conditions, and also support rapid rate ramp until stabilizing on the available bandwidth. Startup can be viewed as a negotiation between the codec and the CC. The codec requests a startup rate and ramp, and the CC responds with the allowable parameters which may be lower/slower. The RMCAT requirements also include the possibility of bandwidth history to further accelerate or even eliminate startup ramp time. While this is highly desirable from an application viewpoint, it may be less acceptable to network operators, since it is in essence a gamble on current congestion state matching historical state, with the potential for significant congestion contribution if the gamble was wrong. Note that startup can often commence before user interaction or conversation to reduce the chance of clipped media.
+</t>
+<!-- VS: shouldn't the application also have a say in what the start rate could/should be? assumimg it is doing the signaling and the SDP can be mangled by it? -->
+<t>
+Delay Tolerance (from Codec to CC): An ideal CC will always minimize delay and target zero. However, real solutions often need a real non-zero delay tolerance. The codec should provide an absolute delay tolerance, perhaps expressed as an impairment factor to mix with other metrics.
+</t>
+<!-- VS: attempting to avoid packet discards due to late arrival? -->
+<t>
+Loss Tolerance (from Codec to CC): An ideal CC will always minimize packet loss and target zero. However, real solutions often need a real non-zero loss tolerance. The codec should provide an absolute loss tolerance, perhaps expressed as an impairment factor to mix with other metrics. Note this is unrecoverable post-repair loss after retransmission or forward error correction.
+</t>
+<!-- VS: concealment? -->
+<t>
+Throughput Sensitivity (from Codec to CC): An ideal CC will always maximize throughput. However, real solutions often need a trade-off between throughput and other metrics such as delay or loss. The codec should provide throughput sensitivity, perhaps expressed as an impairment factor (for low throughputs) to mix with other metrics.
+</t>
+<t>
+Rate Stability (from Codec to CC): The CC algorithm must strike a balance between rate stability and fast reaction to changes in available bandwidth. The codec should provide its preference for rate stability versus fast and frequent reaction to rate changes, perhaps expressed as an impairment factor (for high rate variance over short timescales) to mix with other metrics.
+</t>
+<t>
+Forward Error Correction (FEC): Simple FEC schemes like XOR Parity codes <xref target="RFC5109" /> may not handle consecutive or burst loss well. More complex FEC schemes like Reed-Solomon <xref target="RFC6865" /> or Raptor <xref target="RFC6330" /> codes are more effective at handling bursty loss. The sensitivity to packet loss therefore depends on the media (source) encoding as well as the FEC (channel) encoding, and this sensitivity may differ for different loss patterns like random, periodic, or consecutive loss. Expressing this sensitivity to the congestion controller may help it choose the right balance between optimizing for throughput versus low loss.
+</t>
+<!-- VS: what about expressing codecs that already have in-band FEC e.g., Opus. Or codecs that send a lower quality frame with the subsequent packet? -->
+<t>
+Probing for Available Bandwidth: FEC can also be used to probe for additional available bandwidth, if the application desires a higher target rate than the current rate. FEC is preferable to synthetic probes  since any contribution to congestion by the FEC probe will not impact the post-repair loss rate of the source media flow while synthetic probes may adversely affect the loss rate <xref target="Nagy14" />.
+</t>
+<!-- VS: added citation to FEC for CC. Just reiterating that Lars has claimed there may be Nokia IPR on this. -->
+</section>
 
-          <t>
-          Media Elasticity (from Codec to CC): Many live media encoders are highly elastic, often able to achieve any target bit rate within a wide range, by adapting the media quality. For example, a video encoder may support any bit rate within a range of a few tens or hundreds of kbps up to several Mbps, with rate changes registering as fast as the next video frame, although there may be limitations in the frequency of changes. Other encoders may be less elastic, supporting a narrower rate range, coarser granularity of rate steps, slower reaction to rate changes, etc. Other media, particularly some audio codecs, may be fully inelastic with a single fixed rate. CC can beneficially use codec elasticity, if provided, to plan target rate changes, especially when there are multiple flows sharing CC state and bandwidth.
-          </t>
+<section title="RTP - CC Interactions">
+<t>
+RTP Circuit Breakers: The intent behind RTP circuit breakers <xref target="I-D.ietf-avtcore-rtp-circuit-breakers" /> is to provide a kill switch of last resort, not true congestion control. The breakers should never trip when an effective congestion control is operating. This may impose some boundaries on RMCAT solutions to ensure the congestion control never approaches situations which may trigger the breakers.
+</t>
+<t>
+RTCP Feedback: The primary method of communicating CC information is RTCP.
+</t>
+<t>
+RTP Header Extensions: While RTCP is likely to be the primary carrier of CC feedback, the RMCAT requirements also include the possibility of using RTP header extensions in bidirectional flows for CC feedback. Transmission time <xref target="RFC5450" />, or possibly absolute time, also use header extensions, as would any per packet priority markings expected to survive across different networks and administrative domains.
+</t>
+</section>
 
-          <t>
-          Startup Ramp (from Codec to CC, and from CC to Codec): Startup is an important moment in a conversation. Rapid rate adaptation during startup is therefore important. The codec should minimize its startup media rate as much as possible without adversely impacting the user experience, and support a strategy for rapid rate ramp. The CC should allow the highest startup media rate as possible without adversely impacting network conditions, and also support rapid rate ramp until stabilizing on the available bandwidth. Startup can be viewed as a negotiation between the codec and the CC. The codec requests a startup rate and ramp, and the CC responds with the allowable parameters which may be lower/slower. The RMCAT requirements also include the possibility of bandwidth history to further accelerate or even eliminate startup ramp time. While this is highly desirable from an application viewpoint, it may be less acceptable to network operators, since it is in essence a gamble on current congestion state matching historical state, with the potential for significant congestion contribution if the gamble was wrong. Note that startup can often commence before user interaction or conversation to reduce the chance of clipped media.
-          </t>
-          <!-- VS: shouldn't the application also have a say in what the
-          start rate could/should be? assumimg it is doing the signaling
-          and the SDP can be mangled by it? -->
+<section title="CC - UDP Interactions">
+<t>
+Pacing / Shaping: Simple pacing / shaping strategies delay the transmission of packets to equalize inter-packet time intervals, assuming the bottleneck is most sensitive to packet rate. More complex pacing strategies may go beyond simple even distribution of transmission times. For example, Sprout <xref target="Winstein13" /> attempts to predict the optimal transmission time (and rate) with the highest probability of success for each packet based on channel statistics. Pacing may be always on, or adaptively enabled / disabled based on congestion state to minimize delay. Pacing may be performed within the CC for a single flow or across multiple flows. It may also be performed across all or selective traffic over the network interface if the OS supports interface-level traffic shaping.
+</t>
+<!-- VS: added citation for Sprout -->
+<t>
+Detection of Transport Capabilities: The CC can query the OS for useful transport capabilities such as ECN, DSCP, traffic shaping, etc. This may also aid upper layers in making better decisions such as whether or not to multiplex media streams. For example, if audio can be given differentiated network treatment from video when using separate ports.
+</t>
+<t>
+ECN: If the OS and transport path support ECN, the CC can react faster than a loss-based CC and more reliably to congestion onset and abatement.
+</t>
+<!-- VS: faster than loss based CC? I think packet discarded by the receiver is also an equivalent metric, because discards and ECN markings may appear simultaneously.  -->
+<t>
+DSCP: If the OS and transport path support DSCP, the CC can map per-packet priority from RTP header extensions to DSCP (and layer 2 QoS if available) for better network handling under congestion.
+</t>
+<t>
+AQM: If AQM is present in the bottleneck, and working effectively, there should be little or no excess delay observed when varying the transmission rate. The loss of such delay signals may hinder the performance of congestion control algorithms that are highly dependent on delay variation for adapting transmission rate. If the application has knowledge of the presence of AQM, through any means which are beyond the scope of this memo, it should communicate this to the CC. The CC may use this to alter its signal collection and rate adaptation strategies. The CC must not rely solely on this as a reliable indicator. It must continue to monitor statistics to validate this application hint, and react appropriately if the statistics suggest different network behavior.
+</t>
+</section>
 
-          <t>
-          Delay Tolerance (from Codec to CC): An ideal CC will always minimize delay and target zero. However, real solutions often need a real non-zero delay tolerance. The codec should provide an absolute delay tolerance, perhaps expressed as an impairment factor to mix with other metrics.
-          </t>
-          <!-- VS: attempting to avoid packet discards due to late arrival? -->
+<section title="CC - Shared State Interactions">
+<t>
+Multiple Flows: Sharing state across multiple flows within the application can yield better CC decisions. Sharing state across even more flows beyond the application can yield even better CC decisions. The actual benefits and mechanisms of state sharing and coupled CC are described in <xref target="I-D.welzl-rmcat-coupled-cc" />.
+</t>
+<t>
+Weighted Fairness: An important consideration in CC of multiple flows is their relative application-specified weights. Within an application, it is likely the different flows have different rate requirements, so equal bandwidth sharing may not be fair nor desirable, and weighted fairness may be required.
+</t>
+</section>
 
-          <t>
-          Loss Tolerance (from Codec to CC): An ideal CC will always minimize packet loss and target zero. However, real solutions often need a real non-zero loss tolerance. The codec should provide an absolute loss tolerance, perhaps expressed as an impairment factor to mix with other metrics. Note this is unrecoverable post-repair loss after retransmission or forward error correction.
-          </t>
-          <!-- VS: concealment? -->
+</section>
 
-          <t>
-          Throughput Sensitivity (from Codec to CC): An ideal CC will always maximize throughput. However, real solutions often need a trade-off between throughput and other metrics such as delay or loss. The codec should provide throughput sensitivity, perhaps expressed as an impairment factor (for low throughputs) to mix with other metrics.
-          </t>
+<section anchor="Acknowledgements" title="Acknowledgements">
+<t>
+The RMCAT design team discussions contributed to this memo.
+</t>
+</section>
 
-          <t>
-          Rate Stability (from Codec to CC): The CC algorithm must strike a balance between rate stability and fast reaction to changes in available bandwidth. The codec should provide its preference for rate stability versus fast and frequent reaction to rate changes, perhaps expressed as an impairment factor (for high rate variance over short timescales) to mix with other metrics.
-          </t>
+<!-- Possibly a 'Contributors' section ... -->
 
-          <t>
-          Forward Error Correction (FEC): Simple FEC schemes like XOR Parity codes <xref target="RFC5109" /> may not handle consecutive or burst loss well. More complex FEC schemes like Reed-Solomon <xref target="RFC6865" /> or Raptor <xref target="RFC6330" /> codes are more effective at handling bursty loss. The sensitivity to packet loss therefore depends on the media (source) encoding as well as the FEC (channel) encoding, and this sensitivity may differ for different loss patterns like random, periodic, or consecutive loss. Expressing this sensitivity to the congestion controller may help it choose the right balance between optimizing for throughput versus low loss.
-          </t>
-          <!-- VS: what about expressing codecs that already have in-band FEC e.g., Opus. Or codecs that send a lower quality frame with the subsequent packet? -->
+<section anchor="IANA" title="IANA Considerations">
+<t>This memo includes no request to IANA.</t>
+</section>
 
-          <t>
-          Probing for Available Bandwidth: FEC can also be used to probe for additional available bandwidth, if the application desires a higher target rate than the current rate. FEC is preferable to synthetic probes  since any contribution to congestion by the FEC probe will not impact the post-repair loss rate of the source media flow while synthetic probes may adversely affect the loss rate <xref target="Nagy14" />.
-          </t>
-          <!-- VS: added citation to FEC for CC. Just reiterating that Lars has claimed there may be Nokia IPR on this. -->
-          </section>
+<section anchor="Security" title="Security Considerations">
+<t>
+Amplification attacks often use UDP traffic to launch denial of service attacks. Attackers may attempt to subvert congestion control protocols in UDP applications to launch amplification attacks by signaling more bandwidth than is actually available. For example, sending a victim a forged REMB or a few fast ACKs may result in the victim sending a high rate RTP stream. Attacks on conference servers could lead to further amplification if it distributes the streams to many others. One mitigation is to use SRTCP for congestion control messages where supported. Even if SRTCP is only authenticated not encrypted, SRTCP packets should always pass authentication checks before any message contents are interpreted. Non-secure RTCP should be avoided where possible.
+</t>
+</section>
 
-          <section title="RTP - CC Interactions">
-          <t>
-          RTP Circuit Breakers: The intent behind <xref target="I-D.ietf-avtcore-rtp-circuit-breakers">RTP circuit breakers</xref> is to provide a kill switch of last resort, not true congestion control. The breakers should never trip when an effective congestion control is operating. This may impose some boundaries on RMCAT solutions to ensure the congestion control never approaches situations which may trigger the breakers.
-          </t>
+</middle>
 
-          <t>
-          RTCP Feedback: The primary method of communicating CC information is RTCP.
-          </t>
+<back>
 
-          <t>
-          RTP Header Extensions: While RTCP is likely to be the primary carrier of CC feedback, the RMCAT requirements also include the possibility of using RTP header extensions in bidirectional flows for CC feedback. Transmission time <xref target="RFC5450" />, or possibly absolute time, also use header extensions, as would any per packet priority markings expected to survive across different networks and administrative domains.
-          </t>
-          </section>
+<references title="Normative References">
+<?rfc include="reference.I-D.ietf-rmcat-cc-requirements"?>
+<?rfc include="reference.I-D.ietf-rmcat-eval-criteria"?>
+<?rfc include="reference.I-D.ietf-avtcore-rtp-circuit-breakers"?>
+<?rfc include="reference.I-D.welzl-rmcat-coupled-cc"?>
+<?rfc include="reference.I-D.alvestrand-rmcat-remb"?>
+<?rfc include="reference.I-D.ietf-mmusic-sdp-bundle-negotiation"?>
+<?rfc include="reference.RFC.2119"?>
+<?rfc include="reference.RFC.3550"?>
+<?rfc include="reference.RFC.3551"?>
+<?rfc include="reference.RFC.4585"?>
+<?rfc include="reference.RFC.5104"?>
+<?rfc include="reference.RFC.4566"?>
+<?rfc include="reference.RFC.5506"?>
+<?rfc include="reference.RFC.5761"?>
+<?rfc include="reference.RFC.5450"?>
+</references>
 
-          <section title="CC - UDP Interactions">
-          <t>
-          Pacing / Shaping: Simple pacing / shaping strategies delay the transmission of packets to equalize inter-packet time intervals, assuming the bottleneck is most sensitive to packet rate. More complex pacing strategies may go beyond simple even distribution of transmission times. For example, <xref target="Winstein13">Sprout</xref> attempts to predict the optimal transmission time (and rate) with the highest probability of success for each packet based on channel statistics. Pacing may be always on, or adaptively enabled / disabled based on congestion state to minimize delay. Pacing may be performed within the CC for a single flow or across multiple flows. It may also be performed across all or selective traffic over the network interface if the OS supports interface-level traffic shaping.
-          </t>
-          <!-- VS: added citation for Sprout -->
+<references title="Informative References">
+<?rfc include="reference.RFC.0768"?>
+<?rfc include="reference.RFC.5681"?>
+<?rfc include="reference.RFC.4340"?>
+<?rfc include="reference.RFC.5348"?>
+<?rfc include="reference.RFC.5109"?>
+<?rfc include="reference.RFC.6865"?>
+<?rfc include="reference.RFC.6330"?>
 
-          <t>
-          Detection of Transport Capabilities: The CC can query the OS for useful transport capabilities such as ECN, DSCP, traffic shaping, etc. This may also aid upper layers in making better decisions such as whether or not to multiplex media streams. For example, if audio can be given differentiated network treatment from video when using separate ports.
-          </t>
+<reference anchor="Singh12">
+<front>
+<title>Congestion Control for Interactive Media: Control Loops &amp; APIs</title>
+<author initials="V" surname="Singh"></author>
+<author initials="J"  surname="Ott"></author>
+<author initials="C" surname="Perkins"></author>
+<date month="7" year="2012" />
+</front>
+<seriesInfo name="Proc. of IAB/IRTF Workshop on Congestion Control for Interactive RTC" value="" />
+</reference>
 
-          <t>
-          ECN: If the OS and transport path support ECN, the CC can react faster than a loss-based CC and more reliably to congestion onset and abatement.
-          </t>
-          <!-- VS: faster than loss based CC? I think packet discarded by the receiver is also an equivalent metric, because discards and ECN markings may appear simultaneously.  -->
+<reference anchor="Nagy14">
+<front>
+<title>Congestion Control using FEC for Conversational Multimedia Communication</title>
+<author initials="M" surname="Nagy"></author>
+<author initials="V" surname="Singh"></author>
+<author initials="J"  surname="Ott"></author>
+<author initials="L" surname="Eggert"></author>
+<date month="3" year="2014" />
+</front>
+<seriesInfo name="Proc. of 5th ACM Internation Conference on  Multimedia Systems" value="" />
+</reference>
 
-          <t>
-          DSCP: If the OS and transport path support DSCP, the CC can map per-packet priority from RTP header extensions to DSCP (and layer 2 QoS if available) for better network handling under congestion.
-          </t>
+<reference anchor="Winstein13">
+<front>
+<title>Stochastic Forecasts Achieve High Throughput and Low Delay over Cellular Networks</title>
+<author initials="K" surname="Winstein,"></author>
+<author initials="A" surname="Sivaraman,"></author>
+<author initials="H"  surname="Balakrishnan"></author>
+<date month="4" year="2013" />
+</front>
+<seriesInfo name="Proc. of the 10th USENIX Symposium on Networked Systems Design and Implementation" value="" />
+</reference>
 
-          <t>
-          AQM: If AQM is present in the bottleneck, and working effectively, there should be little or no excess delay observed when varying the transmission rate. The loss of such delay signals may hinder the performance of congestion control algorithms that are highly dependent on delay variation for adapting transmission rate. If the application has knowledge of the presence of AQM, through any means which are beyond the scope of this memo, it should communicate this to the CC. The CC may use this to alter its signal collection and rate adaptation strategies. The CC must not rely solely on this as a reliable indicator. It must continue to monitor statistics to validate this application hint, and react appropriately if the statistics suggest different network behavior.
-          </t>
-          </section>
+</references>
 
-          <section title="CC - Shared State Interactions">
-          <t>
-          Multiple Flows: Sharing state across multiple flows within the application can yield better CC decisions. Sharing state across even more flows beyond the application can yield even better CC decisions. The actual benefits and mechanisms of state sharing and coupled CC are described in <xref target="I-D.welzl-rmcat-coupled-cc" />.
-          </t>
+</back>
 
-          <t>
-          Weighted Fairness: An important consideration in CC of multiple flows is their relative application-specified weights. Within an application, it is likely the different flows have different rate requirements, so equal bandwidth sharing may not be fair nor desirable, and weighted fairness may be required.
-          </t>
-          </section>
-    
-        </section>
-
-    <section anchor="Acknowledgements" title="Acknowledgements">
-      <t>
-          The RMCAT design team discussions contributed to this memo.
-      </t>
-    </section>
-
-    <!-- Possibly a 'Contributors' section ... -->
-
-    <section anchor="IANA" title="IANA Considerations">
-      <t>This memo includes no request to IANA.</t>
-    </section>
-
-    <section anchor="Security" title="Security Considerations">
-      <t>
-          Amplification attacks often use UDP traffic to launch denial of service attacks. Attackers may attempt to subvert congestion control protocols in UDP applications to launch amplification attacks by signaling more bandwidth than is actually available. For example, sending a victim a forged REMB or a few fast ACKs may result in the victim sending a high rate RTP stream. Attacks on conference servers could lead to further amplification if it distributes the streams to many others. One mitigation is to use SRTCP for congestion control messages where supported. Even if SRTCP is only authenticated not encrypted, SRTCP packets should always pass authentication checks before any message contents are interpreted. Non-secure RTCP should be avoided where possible.
-      </t>
-    </section>
-  </middle>
-
-  <!--  *****BACK MATTER ***** -->
-
-  <back>
-    <!-- References split into informative and normative -->
-
-    <!-- There are 2 ways to insert reference entries from the citation libraries:
-     1. define an ENTITY at the top, and use "ampersand character"RFC2629; here (as shown)
-     2. simply use a PI "less than character"?rfc include="reference.RFC.2119.xml"?> here
-        (for I-Ds: include="reference.I-D.narten-iana-considerations-rfc2434bis.xml")
-
-     Both are cited textually in the same manner: by using xref elements.
-     If you use the PI option, xml2rfc will, by default, try to find included files in the same
-     directory as the including file. You can also define the XML_LIBRARY environment variable
-     with a value containing a set of directories to search.  These can be either in the local
-     filing system or remote ones accessed by http (http://domain/dir/... ).-->
-
-    <references title="Normative References">
-            &rfc2119;
-            &rfc3550;
-            &rfc3551;
-            &rfc4566;
-            &rfc4585;
-            &rfc5104;
-            &rfc5450;
-            &rfc5506;
-            &rfc5761;
-            
-            &I-D.ietf-avtcore-rtp-circuit-breakers;
-            &I-D.ietf-rmcat-cc-requirements;
-            &I-D.welzl-rmcat-coupled-cc;
-            &I-D.alvestrand-rmcat-remb;
-            &I-D.ietf-mmusic-sdp-bundle-negotiation;
-            &I-D.ietf-rmcat-eval-criteria;
-
-            
-      <!--?rfc include="http://xml.resource.org/public/rfc/bibxml/reference.I-D.ietf-rmcat-cc-requirements.xml"?-->
-      <!--?rfc include="http://xml.resource.org/public/rfc/bibxml/reference.I-D.ietf-rmcat-eval-criteria.xml"?-->
-      <!--?rfc include="http://xml.resource.org/public/rfc/bibxml/reference.I-D.ietf-avtcore-rtp-circuit-breakers.xml"?-->
-      <!--?rfc include="http://xml.resource.org/public/rfc/bibxml/reference.I-D.welzl-rmcat-coupled-cc.xml"?-->
-      <!--?rfc include="http://xml.resource.org/public/rfc/bibxml/reference.I-D.alvestrand-rmcat-remb.xml"?-->
-      <!--?rfc include="http://xml.resource.org/public/rfc/bibxml/reference.RFC.3550.xml"?-->
-      <!--?rfc include="http://xml.resource.org/public/rfc/bibxml/reference.RFC.3551.xml"?-->
-      <!--?rfc include="http://xml.resource.org/public/rfc/bibxml/reference.RFC.4585.xml"?-->
-      <!--?rfc include="http://xml.resource.org/public/rfc/bibxml/reference.RFC.5104.xml"?-->
-      <!--?rfc include="http://xml.resource.org/public/rfc/bibxml/reference.RFC.4566.xml"?-->
-      <!--?rfc include="http://xml.resource.org/public/rfc/bibxml/reference.RFC.5506.xml"?-->
-      <!--?rfc include="http://xml.resource.org/public/rfc/bibxml/reference.RFC.5761.xml"?-->
-      <!--?rfc include="http://xml.resource.org/public/rfc/bibxml/reference.RFC.5450.xml"?-->
-    </references>
-    <references title="Informative References">
-       &rfc0768;
-       &rfc4340;
-       &rfc5109;
-       &rfc5348;
-       &rfc5681;
-       &rfc6330;
-       &rfc6865;
-
-
-        <!--?rfc include="http://xml.resource.org/public/rfc/bibxml/reference.RFC.768.xml"?-->
-        <!--?rfc include="http://xml.resource.org/public/rfc/bibxml/reference.RFC.5681.xml"?-->
-        <!--?rfc include="http://xml.resource.org/public/rfc/bibxml/reference.RFC.4340.xml"?-->
-        <!--?rfc include="http://xml.resource.org/public/rfc/bibxml/reference.RFC.5348.xml"?-->
-        <!--?rfc include="http://xml.resource.org/public/rfc/bibxml/reference.RFC.5109.xml"?-->
-        <!--?rfc include="http://xml.resource.org/public/rfc/bibxml/reference.RFC.6865.xml"?-->
-        <!--?rfc include="http://xml.resource.org/public/rfc/bibxml/reference.RFC.6330.xml"?-->
-        <reference anchor="Singh12">
-            <!-- the following is the minimum to make xml2rfc happy -->
-            <front>
-                <title>Congestion Control for Interactive Media: Control Loops &amp; APIs</title>
-                <author initials="V" surname="Singh"></author>
-                <author initials="J"  surname="Ott"></author>
-                <author initials="C" surname="Perkins"></author>
-                <date month="7" year="2012" />
-            </front>
-            <seriesInfo name="Proc. of IAB/IRTF Workshop on Congestion Control for Interactive RTC" value="" />
-        </reference>
-        <reference anchor="Nagy14">
-            <!-- the following is the minimum to make xml2rfc happy -->
-            <front>
-                <title>Congestion Control using FEC for Conversational Multimedia Communication</title>
-                <author initials="M" surname="Nagy"></author>
-                <author initials="V" surname="Singh"></author>
-                <author initials="J"  surname="Ott"></author>
-                <author initials="L" surname="Eggert"></author>
-                <date month="3" year="2014" />
-            </front>
-            <seriesInfo name="Proc. of 5th ACM Internation Conference on  Multimedia Systems" value="" />
-        </reference>
-        <reference anchor="Winstein13">
-            <!-- the following is the minimum to make xml2rfc happy -->
-            <front>
-                <title>Stochastic Forecasts Achieve High Throughput and Low Delay over Cellular Networks</title>
-                <author initials="K" surname="Winstein,"></author>
-                <author initials="A" surname="Sivaraman,"></author>
-                <author initials="H"  surname="Balakrishnan
-"></author>
-                <date month="4" year="2013" />
-            </front>
-            <seriesInfo name="Proc. of the 10th USENIX Symposium on Networked Systems Design and Implementation" value="" />
-        </reference>
-    </references>
-  </back>
 </rfc>
