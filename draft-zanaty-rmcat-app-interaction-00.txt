@@ -5,10 +5,10 @@
 RMCAT WG                                                       M. Zanaty
 Internet-Draft                                                     Cisco
 Intended status: Informational                                  V. Singh
-Expires: August 22, 2014                                Aalto University
+Expires: September 4, 2014                              Aalto University
                                                            S. Nandakumar
                                                                    Cisco
-                                                       February 18, 2014
+                                                           March 3, 2014
 
 
           RTP Application Interaction with Congestion Control
@@ -40,7 +40,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on August 22, 2014.
+   This Internet-Draft will expire on September 4, 2014.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Zanaty, et al.           Expires August 22, 2014                [Page 1]
+Zanaty, et al.          Expires September 4, 2014               [Page 1]
 
-Internet-Draft        RMCAT Application Interaction        February 2014
+Internet-Draft        RMCAT Application Interaction           March 2014
 
 
    publication of this document.  Please review these documents
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Zanaty, et al.           Expires August 22, 2014                [Page 2]
+Zanaty, et al.          Expires September 4, 2014               [Page 2]
 
-Internet-Draft        RMCAT Application Interaction        February 2014
+Internet-Draft        RMCAT Application Interaction           March 2014
 
 
        media flows that are significantly impaired by congestion (in
@@ -165,9 +165,9 @@ Internet-Draft        RMCAT Application Interaction        February 2014
 
 
 
-Zanaty, et al.           Expires August 22, 2014                [Page 3]
+Zanaty, et al.          Expires September 4, 2014               [Page 3]
 
-Internet-Draft        RMCAT Application Interaction        February 2014
+Internet-Draft        RMCAT Application Interaction           March 2014
 
 
 3.  Conceptual Model
@@ -221,9 +221,9 @@ Internet-Draft        RMCAT Application Interaction        February 2014
 
 
 
-Zanaty, et al.           Expires August 22, 2014                [Page 4]
+Zanaty, et al.          Expires September 4, 2014               [Page 4]
 
-Internet-Draft        RMCAT Application Interaction        February 2014
+Internet-Draft        RMCAT Application Interaction           March 2014
 
 
       [RFC5104] or REMB [I-D.alvestrand-rmcat-remb] (for receiver-side
@@ -277,9 +277,9 @@ Internet-Draft        RMCAT Application Interaction        February 2014
 
 
 
-Zanaty, et al.           Expires August 22, 2014                [Page 5]
+Zanaty, et al.          Expires September 4, 2014               [Page 5]
 
-Internet-Draft        RMCAT Application Interaction        February 2014
+Internet-Draft        RMCAT Application Interaction           March 2014
 
 
                      +----------------------+
@@ -333,9 +333,9 @@ Internet-Draft        RMCAT Application Interaction        February 2014
 
 
 
-Zanaty, et al.           Expires August 22, 2014                [Page 6]
+Zanaty, et al.          Expires September 4, 2014               [Page 6]
 
-Internet-Draft        RMCAT Application Interaction        February 2014
+Internet-Draft        RMCAT Application Interaction           March 2014
 
 
 5.3.  Codec - CC Interactions
@@ -389,9 +389,9 @@ Internet-Draft        RMCAT Application Interaction        February 2014
 
 
 
-Zanaty, et al.           Expires August 22, 2014                [Page 7]
+Zanaty, et al.          Expires September 4, 2014               [Page 7]
 
-Internet-Draft        RMCAT Application Interaction        February 2014
+Internet-Draft        RMCAT Application Interaction           March 2014
 
 
    Delay Tolerance (from Codec to CC): An ideal CC will always minimize
@@ -445,9 +445,9 @@ Internet-Draft        RMCAT Application Interaction        February 2014
 
 
 
-Zanaty, et al.           Expires August 22, 2014                [Page 8]
+Zanaty, et al.          Expires September 4, 2014               [Page 8]
 
-Internet-Draft        RMCAT Application Interaction        February 2014
+Internet-Draft        RMCAT Application Interaction           March 2014
 
 
 5.4.  RTP - CC Interactions
@@ -501,9 +501,9 @@ Internet-Draft        RMCAT Application Interaction        February 2014
 
 
 
-Zanaty, et al.           Expires August 22, 2014                [Page 9]
+Zanaty, et al.          Expires September 4, 2014               [Page 9]
 
-Internet-Draft        RMCAT Application Interaction        February 2014
+Internet-Draft        RMCAT Application Interaction           March 2014
 
 
    DSCP: If the OS and transport path support DSCP, the CC can map per-
@@ -557,9 +557,9 @@ Internet-Draft        RMCAT Application Interaction        February 2014
 
 
 
-Zanaty, et al.           Expires August 22, 2014               [Page 10]
+Zanaty, et al.          Expires September 4, 2014              [Page 10]
 
-Internet-Draft        RMCAT Application Interaction        February 2014
+Internet-Draft        RMCAT Application Interaction           March 2014
 
 
    many others.  One mitigation is to use SRTCP for congestion control
@@ -613,9 +613,9 @@ Internet-Draft        RMCAT Application Interaction        February 2014
 
 
 
-Zanaty, et al.           Expires August 22, 2014               [Page 11]
+Zanaty, et al.          Expires September 4, 2014              [Page 11]
 
-Internet-Draft        RMCAT Application Interaction        February 2014
+Internet-Draft        RMCAT Application Interaction           March 2014
 
 
    [RFC3551]  Schulzrinne, H. and S. Casner, "RTP Profile for Audio and
@@ -669,9 +669,9 @@ Internet-Draft        RMCAT Application Interaction        February 2014
 
 
 
-Zanaty, et al.           Expires August 22, 2014               [Page 12]
+Zanaty, et al.          Expires September 4, 2014              [Page 12]
 
-Internet-Draft        RMCAT Application Interaction        February 2014
+Internet-Draft        RMCAT Application Interaction           March 2014
 
 
    [RFC6330]  Luby, M., Shokrollahi, A., Watson, M., Stockhammer, T.,
@@ -725,4 +725,4 @@ Authors' Addresses
 
 
 
-Zanaty, et al.           Expires August 22, 2014               [Page 13]
+Zanaty, et al.          Expires September 4, 2014              [Page 13]
