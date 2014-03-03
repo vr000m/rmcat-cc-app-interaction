@@ -13,7 +13,7 @@ version: 00
 On submission of a draft to the datatracker, please tag it. In that way we just maintain one xml version and the -xx versions stay static. Command to tag a commit version is:
 
 ```bash
-$ git tag -d draft-name
+$ git tag -a draft-name -m "version xx for individual/IETF submission"
 $ git push --tags
 ```
 
