@@ -82,6 +82,21 @@
 </address>
 </author>
 
+<author fullname="Zaheduzzaman Sarker" initials="Z." surname="Sarker">
+<organization>Ericsson AB</organization>
+<address>
+<postal>
+<street></street>
+<city>Luleae</city>
+<region></region>
+<code></code>
+<country>Sweden</country>
+</postal>
+<phone></phone>
+<email>zaheduzzaman.sarker@ericsson.com</email>
+</address>
+</author>
+
 <date year="2014" />
 
 <!-- If the month and year are both specified and are the current ones, xml2rfc will fill
@@ -165,20 +180,21 @@ It is useful to decompose an RTP application into several components to facilita
 <figure align="center" anchor="model1">
 <preamble></preamble>
 <artwork align="center"><![CDATA[
-+----------------------+
-|         Config       |
-|           |          |
-|         Codec        |
-|         |   |        |
-| APP     |  RTP       |
-|         |   |        |
-|         Congestion---|---Shared
-|         Control      |   State
-+----------------------+
-            |
-+----------------------+
-| OS       UDP         |
-+----------------------+
++----------------------------+
+|       +-----Config-----+   |
+|       |       |        |   |
+|       |     Codec      |   |
+|       |     | | |      |   |
+| APP   +---RTP | RTCP---+   |
+|       |     | | |          |
+|       |     | | |          |
+|       +---Congestion-------|---Shared
+|            Control         |   State
++----------------------------+
+                |
++----------------------------+
+| OS           UDP           |
++----------------------------+
 ]]></artwork>
 <postamble></postamble>
 </figure>
@@ -189,16 +205,18 @@ It is useful to decompose an RTP application into several components to facilita
 APP: Application containing one or more RTP streams and the corresponding media codecs and congestion controllers. For example, a WebRTC browser.
 </t>
 <t>
-Config: Media and transport configuration specified by the application (for example, using the constraints API in a WebRTC Javascript application), after media and transport parameters have been negotiated with the remote peer (for example, using SDP or other protocols). This determines the initial static configuration negotiated in session establishment. The dynamic state may differ due to congestion or other factors, but still must conform to limits established in the config.
+Config: Configuration specified by the application that provides the media and transport parameters, RTP and RTCP parameters and extensions, and congestion control parameters. For example, a WebRTC Javascript application may use the 'constraints' API to affect the media configuration, and SDP applications may negotiate the media and transport parameters with the remote peer. This determines the initial static configuration negotiated in session establishment. The dynamic state may differ due to congestion or other factors, but still must conform to limits established in the config.
 </t>
 <t>
 Codec: Media encoder/decoder or other source/sink for the RTP payload. The codec may be, for example, a simple monaural audio format, a complex scalable video codec with several dependent layers, or a source/sink with no live encoding/decoding such as a mixer which selectively switches or forwards streams rather than mixes media.
 </t>
 <t>
-RTP: Standard RTP stack functions, including RTCP, but excluding possible new extensions specific to congestion control (CC) such as circuit breakers <xref target="I-D.ietf-avtcore-rtp-circuit-breakers" />,  TMMBR <xref target="RFC5104" /> or REMB <xref target="I-D.alvestrand-rmcat-remb" /> (for receiver-side CC), ACK/NACK <xref target="RFC4585" /> (for sender-side CC), absolute timestamps (for sender-side or receiver-side CC), etc.
+RTP: Standard RTP stack functions, including media packetization / depacketization, but excluding possible new extensions specific to congestion control (CC) such as absolute timestamps in RTP header extensions.
+
+RTCP: Standard RTCP functions, but excluding possible new extensions specific to congestion control (CC) such as circuit breakers <xref target="I-D.ietf-avtcore-rtp-circuit-breakers" />,  TMMBR <xref target="RFC5104" /> or REMB <xref target="I-D.alvestrand-rmcat-remb" /> (for receiver-side CC), ACK/NACK <xref target="RFC4585" /> (for sender-side CC), absolute timestamps (for sender-side or receiver-side CC), etc.
 </t>
 <t>
-Congestion Control: All functions directly responsible for congestion control, including a possible new RTP/RTCP extensions, send rate computation (for sender-side CC), receive rate computation (for receiver-side CC), other statistics, and control of the UDP sockets.
+Congestion Control: All functions directly responsible for congestion control, including possible new RTP/RTCP extensions, send rate computation (for sender-side CC), receive rate computation (for receiver-side CC), other statistics, and control of the UDP sockets including packet scheduling for pacing/shaping.
 </t>
 <!-- VS: traffic shapping or a pacing buffer? the absolute send timestamps should be here even though it applies to RTP? -->
 <t>
@@ -217,22 +235,22 @@ OS: Operating System containing the UDP socket interface and other network funct
 There are advantages and drawbacks to implementing congestion control in the application layer. It avoids OS dependencies and allows for rapid experimentation, evolution and optimization for each application. However, it also puts the burden on all applications, which raises the risks of improper or divergent implementations. One motivation of this memo is to mitigate such risks by giving proper guidance on how the application components relating to congestion control should interact.
 </t>
 <t>
-Another drawback of congestion control in the application layer is that any decomposition, including the one presented in <xref target="model1" />, is purely conceptual and illustrative, since implementations have differing designs and decompositions. Conversely, this can be viewed as an advantage to distribute congestion control functions wherever expedient without rigid interfaces. For example, they may be distributed within the RTP stack itself, so the separate components in <xref target="model1" /> are combined into a single RTP+CC component as shown in <xref target="model2" />.
+Another drawback of congestion control in the application layer is that any decomposition, including the one presented in <xref target="model1" />, is purely conceptual and illustrative, since implementations have differing designs and decompositions. Conversely, this can be viewed as an advantage to distribute congestion control functions wherever expedient without rigid interfaces. For example, they may be distributed within the RTP/RTCP stack itself, so the separate components in <xref target="model1" /> are combined into a single RTP+RTCP+CC component as shown in <xref target="model2" />.
 </t>
 <figure align="center" anchor="model2">
 <preamble></preamble>
 <artwork align="center"><![CDATA[
-+----------------------+
-|           Config     |
-|             |        |
-|           Codec      |
-| APP         |        |
-|          RTP+CC------|---Shared
-+----------------------+   State
-              |
-+----------------------+
-| OS         UDP       |
-+----------------------+
++----------------------------+
+|       +-----Config         |
+|       |       |            |
+|       |     Codec          |
+| APP   |       |            |
+|       +---RTP+RTCP+CC------|---Shared
++----------------------------+   State
+                |
++----------------------------+
+| OS           UDP           |
++----------------------------+
 ]]></artwork>
 <postamble></postamble>
 </figure>
@@ -245,10 +263,16 @@ The conceptual model in <xref target="model1" /> will be used throughout this me
 
 <section title="Config - Codec Interactions">
 <t>
-The primary interactions between the config and the codec that are relevant to congestion control are the multiplexing of media streams <xref target="I-D.ietf-mmusic-sdp-bundle-negotiation" /> and RTP/RTCP <xref target="RFC5761" /> on the same UDP port, and the negotiated RTCP attributes such as reduced size <xref target="RFC5506" />, codec control <xref target="RFC5104" />, transmission time <xref target="RFC5450" />, etc.
+The primary interactions between the config and the codec that are relevant to congestion control are the multiplexing of media streams <xref target="I-D.ietf-mmusic-sdp-bundle-negotiation" /> and RTP/RTCP <xref target="RFC5761" /> on the same UDP port.
 </t>
 <t>
 The config also establishes limits for the codec such as maximum bit rate and other codec-specific parameters. For example, a video codec config often sets limits on maximum resolution and frame rate as well as bit rate.
+</t>
+</section>
+
+<section title="Config - RTP/RTCP Interactions">
+<t>
+The config establishes the negotiated RTP and RTCP attributes and extensions such as Extended Reports (XR), reduced size <xref target="RFC5506" />, codec control <xref target="RFC5104" />, transmission time <xref target="RFC5450" />, etc.
 </t>
 </section>
 
