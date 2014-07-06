@@ -21,7 +21,7 @@
 <?rfc subcompact="no" ?>
 <!-- keep one blank line between list items -->
 <!-- end of list of popular I-D processing instructions -->
-<rfc category="info" docName="draft-zanaty-rmcat-app-interaction-00" ipr="trust200902">
+<rfc category="info" docName="draft-zanaty-rmcat-app-interaction-01" ipr="trust200902">
 <!-- category values: std, bcp, info, exp, and historic
      ipr values: full3667, noModification3667, noDerivatives3667
      you can add the attributes updates="NNNN" and obsoletes="NNNN" 
@@ -124,7 +124,7 @@
 
 <abstract>
 <t>
-Interactive real-time media applications that use the Real-time Transport Protocol (RTP) over the User Datagram Protocol (UDP) must use congestion control techniques above the UDP layer since it provides none. This memo describes the interactions and interfaces necessary between the application components that relate to congestion control, including the RTP layer, the higher-level media codec control layer, and the lower-level transport interface and the congestion control layer.
+Interactive real-time media applications that use the Real-time Transport Protocol (RTP) over the User Datagram Protocol (UDP) must use congestion control techniques above the UDP layer since it provides none. This memo describes the interactions and conceptual interfaces necessary between the application components that relate to congestion control, including the RTP layer, the higher-level media codec control layer, and the lower-level transport interface, as well as components dedicated to congestion control functions.
 </t>
 </abstract>
 
@@ -159,7 +159,7 @@ The RTP Media Congestion Avoidance Techniques (RMCAT) working group was chartere
 The RMCAT requirements <xref target="I-D.ietf-rmcat-cc-requirements" /> include low delay, reasonably high throughput, fast reaction to capacity changes including routing or interface changes, stability without over-reaction or oscillation, fair bandwidth sharing with other instances of itself and TCP flows, sharing information across multiple flows when possible <xref target="I-D.welzl-rmcat-coupled-cc" />, and performing as well or better in networks which support Active Queue Management (AQM), Explicit Congestion Notification (ECN), or Differentiated Services Code Points (DSCP).
 </t>
 <t>
-In order to meet these requirements, interactions are necessary between the application's congestion controller, the RTP layer, media codecs, other components, and the OS's UDP stack. This memo discusses these interactions, presents a conceptual model of the required interfaces based on a simplified application decomposition, and proposes specific information exchange across these interfaces along with corresponding component behavior.
+In order to meet these requirements, interactions are necessary between the application's congestion controller, the RTP layer, media codecs, other components, and the OS UDP stack. This memo discusses these interactions, presents a conceptual model of the required interfaces based on a simplified application decomposition, and proposes specific information exchange across these interfaces along with corresponding component behavior.
 </t>
 <t>
 Note that RTP can also operate over other transports with integrated congestion control such as TCP <xref target="RFC5681" /> and DCCP <xref target="RFC4340" />, but that is beyond the scope of RMCAT and this memo.
@@ -208,22 +208,22 @@ APP: Application containing one or more RTP streams and the corresponding media 
 Config: Configuration specified by the application that provides the media and transport parameters, RTP and RTCP parameters and extensions, and congestion control parameters. For example, a WebRTC Javascript application may use the 'constraints' API to affect the media configuration, and SDP applications may negotiate the media and transport parameters with the remote peer. This determines the initial static configuration negotiated in session establishment. The dynamic state may differ due to congestion or other factors, but still must conform to limits established in the config.
 </t>
 <t>
-Codec: Media encoder/decoder or other source/sink for the RTP payload. The codec may be, for example, a simple monaural audio format, a complex scalable video codec with several dependent layers, or a source/sink with no live encoding/decoding such as a mixer which selectively switches or forwards streams rather than mixes media.
+Codec: Media encoder/decoder or other source/sink for the RTP payload. The codec may be, for example, a simple monaural audio format, a complex scalable video codec with several dependent layers, or a source/sink with no live encoding/decoding such as a mixer which selectively switches and forwards streams rather than mixes media.
 </t>
 <t>
-RTP: Standard RTP stack functions, including media packetization / depacketization, but excluding possible new extensions specific to congestion control (CC) such as absolute timestamps in RTP header extensions.
+RTP: Standard RTP stack functions, including media packetization / depacketization and header processing, but excluding existing extensions and possible new extensions specific to congestion control (CC) such as absolute timestamps or relative transmission time offsets in RTP header extensions.
 
-RTCP: Standard RTCP functions, but excluding possible new extensions specific to congestion control (CC) such as circuit breakers <xref target="I-D.ietf-avtcore-rtp-circuit-breakers" />,  TMMBR <xref target="RFC5104" /> or REMB <xref target="I-D.alvestrand-rmcat-remb" /> (for receiver-side CC), ACK/NACK <xref target="RFC4585" /> (for sender-side CC), absolute timestamps (for sender-side or receiver-side CC), etc.
+RTCP: Standard RTCP functions, including sender reports, receiver reports, extended reports, circuit breakers <xref target="I-D.ietf-avtcore-rtp-circuit-breakers" />, feedback messages such as NACK  <xref target="RFC4585" /> and codec control messages such as TMMBR <xref target="RFC5104" />, but excluding existing extensions and possible new extensions specific to congestion control (CC) such as REMB <xref target="I-D.alvestrand-rmcat-remb" /> (for receiver-side CC), ACK (for sender-side CC), absolute and/or relative timestamps (for sender-side or receiver-side CC), etc.
 </t>
 <t>
-Congestion Control: All functions directly responsible for congestion control, including possible new RTP/RTCP extensions, send rate computation (for sender-side CC), receive rate computation (for receiver-side CC), other statistics, and control of the UDP sockets including packet scheduling for pacing/shaping.
+Congestion Control: All functions directly responsible for congestion control, including possible new RTP/RTCP extensions, send rate computation (for sender-side CC), receive rate computation (for receiver-side CC), other statistics, and control of the UDP sockets including packet scheduling for traffic shaping/pacing.
 </t>
 <!-- VS: traffic shapping or a pacing buffer? the absolute send timestamps should be here even though it applies to RTP? -->
 <t>
 Shared State: Storage and exchange of congestion control state for multiple flows within the application and beyond it.
 </t>
 <t>
-OS: Operating System containing the UDP socket interface and other network functions such as ECN, DSCP, physical interface events, interface-level traffic shaping, etc.
+OS: Operating System containing the UDP socket interface and other network functions such as ECN, DSCP, physical interface events, interface-level traffic shaping and packet scheduling, etc.
 </t>
 </list>
 </t>
@@ -312,7 +312,7 @@ Forward Error Correction (FEC): Simple FEC schemes like XOR Parity codes <xref t
 </t>
 <!-- VS: what about expressing codecs that already have in-band FEC e.g., Opus. Or codecs that send a lower quality frame with the subsequent packet? -->
 <t>
-Probing for Available Bandwidth: FEC can also be used to probe for additional available bandwidth, if the application desires a higher target rate than the current rate. FEC is preferable to synthetic probes  since any contribution to congestion by the FEC probe will not impact the post-repair loss rate of the source media flow while synthetic probes may adversely affect the loss rate <xref target="Nagy14" />.
+Probing for Available Bandwidth: FEC can also be used to probe for additional available bandwidth, if the application desires a higher target rate than the current rate. FEC is preferable to synthetic probes  since any contribution to congestion by the FEC probe will not impact the post-repair loss rate of the source media flow while synthetic probes may adversely affect the loss rate <xref target="Nagy14" />. Note that any use of FEC or retransmission must ensure that the total flow of all packets including FEC, retransmission and original media never exceeds the Allowed Rate.
 </t>
 <!-- VS: added citation to FEC for CC. Just reiterating that Lars has claimed there may be Nokia IPR on this. -->
 </section>
