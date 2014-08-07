@@ -5,9 +5,9 @@
 #             echo Working directory is dirty >&2; \
 #         fi
 
-DRAFTS =	draft-zanaty-rmcat-app-interaction.txt \
-					draft-zanaty-rmcat-app-interaction.html \
-					draft-zanaty-rmcat-app-interaction.pdf
+DRAFTS =	draft-ietf-rmcat-app-interaction.txt \
+					draft-ietf-rmcat-app-interaction.html \
+					draft-ietf-rmcat-app-interaction.pdf
 CMDSEP = ;
 #VERSION = 00 
 
